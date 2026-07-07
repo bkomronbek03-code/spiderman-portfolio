@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nega Aynan Men — Spider-Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="web-overlay" id="webOverlay"></div>
+<canvas id="webCanvas"></canvas>
+<div class="custom-cursor" id="cursor">
+  <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="6" class="c-dot"/><circle cx="20" cy="20" r="16" class="c-ring"/><line x1="20" y1="0" x2="20" y2="8"/><line x1="20" y1="32" x2="20" y2="40"/><line x1="0" y1="20" x2="8" y2="20"/><line x1="32" y1="20" x2="40" y2="20"/></svg>
+</div>
+
+<div class="loader" id="loader">
+  <div class="loader-web"></div>
+  <span>ULANMOQDA...</span>
+</div>
+
+<nav id="navbar">
+  <div class="logo"><span class="logo-mark">◆</span>PETER<span class="red">.DEV</span></div>
+  <ul class="nav-links">
+    <li><a href="#home">Bosh sahifa</a></li>
+    <li><a href="#about">Nega Men?</a></li>
+    <li><a href="#skills">Kuchlarim</a></li>
+    <li><a href="#timeline">Tajriba</a></li>
+    <li><a href="#contact">Aloqa</a></li>
+  </ul>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-content">
+    <p class="pre-title reveal">FRIENDLY NEIGHBORHOOD DEVELOPER</p>
+    <h1 class="glitch-title reveal" data-text="NEGA AYNAN MEN?">NEGA AYNAN MEN?</h1>
+    <p class="hero-sub reveal">Har bir zarrachamda mas'uliyat bor: <span class="red">"Katta kuch — katta mas'uliyat."</span><br>Men aynan shunday tafakkur bilan kod yozaman, muammo yechaman va jamoani himoya qilaman.</p>
+    <div class="hero-btns reveal">
+      <a href="#about" class="btn btn-primary">Meni tanishtiring</a>
+      <a href="#contact" class="btn btn-outline">Bog'lanish</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="spotlight" id="spotlight"></div>
+    <img src="spiderman.jpg" alt="Spiderman" id="heroImg">
+    <div class="img-frame"></div>
+  </div>
+  <a class="scroll-hint" href="#about"><span></span>SCROLL</a>
+</header>
+
+<main>
+
+  <section id="about" class="section">
+    <h2 class="section-title reveal"><span class="num">01.</span> Nega Aynan Men Bo'lishim Kerak</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Har bir yaxshi qahramon — orqasida ko'rinmas mehnat, son-sanoqsiz tunlar va tushib qayta turgan sahifalar bor odam. Men ham xuddi shunday: kod yozayotganimda har bir bug — mag'lub etilishi kerak bo'lgan yovuz kuch, har bir deadline — shahar ustidan tortilgan tola.</p>
+        <p>Men g'oyani ko'rmayman — men <span class="red">yechimni</span> ko'raman. Muammo qayerda bo'lmasin, men u yerga birinchi bo'lib yetib boraman.</p>
+        <div class="quote-box">"Bu qobiliyat emas — bu tanlov. Men har kuni yaxshiroq bo'lishni tanlayman."</div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card"><span class="stat-num" data-count="6">0</span><span class="stat-plus">+</span><p>Yillik tajriba</p></div>
+        <div class="stat-card"><span class="stat-num" data-count="45">0</span><span class="stat-plus">+</span><p>Yakunlangan loyiha</p></div>
+        <div class="stat-card"><span class="stat-num" data-count="99">0</span><span class="stat-plus">%</span><p>Mijozlar mamnunligi</p></div>
+        <div class="stat-card"><span class="stat-num" data-count="24">0</span><span class="stat-plus">/7</span><p>Doim tayyor</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section alt">
+    <h2 class="section-title reveal"><span class="num">02.</span> Superkuchlarim</h2>
+    <div class="skills-grid">
+      <div class="skill-item reveal">
+        <div class="skill-head"><span>Spider-Sense (Muammoni sezish)</span><span class="skill-pct">96%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="96"></div></div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-head"><span>Web-Shooter (Tez kod yozish)</span><span class="skill-pct">92%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="92"></div></div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-head"><span>Wall-Crawling (Murakkab tizimlarga moslashuv)</span><span class="skill-pct">89%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="89"></div></div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-head"><span>Agility (Jamoada tez ishlash)</span><span class="skill-pct">94%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="94"></div></div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-head"><span>Responsibility (Mas'uliyat)</span><span class="skill-pct">100%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="100"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline" class="section">
+    <h2 class="section-title reveal"><span class="num">03.</span> Origin Story</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content"><span class="tl-year">2019</span><h3>Chaqiruv</h3><p>Kodlash olamiga birinchi "chaqirilish" — birinchi loyiha, birinchi bug, birinchi g'alaba.</p></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content"><span class="tl-year">2021</span><h3>Kuchlarni egallash</h3><p>Frontend, backend va tizim dizayni — har biri yangi "o'rgimchak kuchi" bo'lib qo'shildi.</p></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content"><span class="tl-year">2023</span><h3>Katta mas'uliyat</h3><p>Jamoa yetakchisi sifatida loyihalarni "shahar" kabi himoya qildim — muddatlar, sifat, ishonch.</p></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content"><span class="tl-year">2026</span><h3>Bugun</h3><p>Siz izlayotgan aynan o'sha odamman — muammoni his qiluvchi, yechimni quruvchi.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact-section">
+    <h2 class="section-title reveal"><span class="num">04.</span> Shaharni Birga Himoya Qilamizmi?</h2>
+    <p class="contact-sub reveal">Signal yuboring — men allaqachon yo'lda bo'laman.</p>
+    <form class="contact-form reveal" id="contactForm">
+      <div class="form-row">
+        <input type="text" placeholder="Ismingiz" required>
+        <input type="email" placeholder="Email" required>
+      </div>
+      <textarea placeholder="Xabaringiz..." rows="4" required></textarea>
+      <button type="submit" class="btn btn-primary">Signalni Yuborish</button>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Peter. Barcha huquqlar himoyalangan. <span class="red">Sizning o'rgimchagingiz.</span></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
