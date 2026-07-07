@@ -15,25 +15,39 @@ window.addEventListener('mousemove', e => {
 window.addEventListener('mousedown', () => cursor.classList.add('click'));
 window.addEventListener('mouseup', () => cursor.classList.remove('click'));
 
-/* ---------- Web-shooter click effect ---------- */
+/* ---------- Web-shooter click effect: a spider web flies in on click ---------- */
 const webOverlay = document.getElementById('webOverlay');
 let lastShot = 0;
 window.addEventListener('click', e => {
   const now = Date.now();
-  if (now - lastShot < 90) return;
+  if (now - lastShot < 180) return;
   lastShot = now;
-  shootWeb(e.clientX, e.clientY);
+  spawnWebFly(e.clientX, e.clientY);
 });
 
-function shootWeb(x, y) {
-  // shoot from two bottom corners toward click point, like double web-shooters
-  const origins = [
-    { x: 40, y: window.innerHeight - 20 },
-    { x: window.innerWidth - 40, y: window.innerHeight - 20 }
-  ];
-  origins.forEach((o, i) => {
-    setTimeout(() => drawWebLine(o.x, o.y, x, y), i * 60);
+function spawnWebFly(x, y) {
+  const web = document.createElement('img');
+  web.src = 'spiderweb-cursor.png';
+  web.className = 'web-fly';
+
+  // fly in from a random screen edge toward the click point
+  const edge = Math.floor(Math.random() * 4);
+  let sx, sy;
+  if (edge === 0) { sx = x; sy = -220; }
+  else if (edge === 1) { sx = window.innerWidth + 220; sy = y; }
+  else if (edge === 2) { sx = x; sy = window.innerHeight + 220; }
+  else { sx = -220; sy = y; }
+
+  web.style.left = sx + 'px';
+  web.style.top = sy + 'px';
+  webOverlay.appendChild(web);
+
+  requestAnimationFrame(() => {
+    web.style.left = x + 'px';
+    web.style.top = y + 'px';
+    web.classList.add('land');
   });
+
   setTimeout(() => {
     const impact = document.createElement('div');
     impact.className = 'web-impact';
@@ -41,29 +55,18 @@ function shootWeb(x, y) {
     impact.style.top = y + 'px';
     webOverlay.appendChild(impact);
     setTimeout(() => impact.remove(), 550);
-  }, 120);
-}
+  }, 480);
 
-function drawWebLine(x1, y1, x2, y2) {
-  const dx = x2 - x1, dy = y2 - y1;
-  const length = Math.sqrt(dx * dx + dy * dy);
-  const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-  const line = document.createElement('div');
-  line.className = 'web-shot';
-  line.style.left = x1 + 'px';
-  line.style.top = y1 + 'px';
-  line.style.width = length + 'px';
-  line.style.transform = `rotate(${angle}deg)`;
-  webOverlay.appendChild(line);
-  setTimeout(() => line.remove(), 500);
+  setTimeout(() => web.classList.add('fade'), 460);
+  setTimeout(() => web.remove(), 820);
 }
 
 /* ---------- Ambient spider-web canvas network ---------- */
 const canvas = document.getElementById('webCanvas');
 const ctx = canvas.getContext('2d');
 let w, h, nodes = [];
-const NODE_COUNT = 55;
-const LINK_DIST = 150;
+const NODE_COUNT = 75;
+const LINK_DIST = 170;
 
 function resizeCanvas() {
   w = canvas.width = window.innerWidth;
@@ -94,7 +97,7 @@ function animateWeb() {
       const dy = nodes[i].y - nodes[j].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < LINK_DIST) {
-        ctx.strokeStyle = `rgba(224,33,46,${(1 - dist / LINK_DIST) * 0.18})`;
+        ctx.strokeStyle = `rgba(224,33,46,${(1 - dist / LINK_DIST) * 0.22})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -174,6 +177,15 @@ if (heroImageWrap) {
     spotlight.style.left = (e.clientX - rect.left) + 'px';
     spotlight.style.top = (e.clientY - rect.top) + 'px';
   });
+}
+
+/* ---------- Occasional title glitch burst (comic-panel flair, not constant flicker) ---------- */
+const glitchTitle = document.querySelector('.glitch-title');
+if (glitchTitle) {
+  setInterval(() => {
+    glitchTitle.classList.add('burst');
+    setTimeout(() => glitchTitle.classList.remove('burst'), 180);
+  }, 5000);
 }
 
 /* ---------- Contact form ---------- */
